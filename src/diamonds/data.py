@@ -86,8 +86,8 @@ def preprocess_data( X: pd.DataFrame
         save_model(preprocessor, "preprocessor")
     else :
         preprocessor = load_model("preprocessor")
-    df_preprocessed = preprocessor.transform(X)
-    logger.info(f"Preprocessed the diamonds dataset: {X.shape} -> {df_preprocessed.shape}") 
+        df_preprocessed = preprocessor.transform(X)
+        logger.info(f"Preprocessed the diamonds dataset: {X.shape} -> {df_preprocessed.shape}") 
     return df_preprocessed
 
 def create_X_y(df: pd.DataFrame) ->tuple[pd.DataFrame, pd.Series]:
