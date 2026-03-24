@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - 0-Starter-productionizing-ml
+      - main
+      - master
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: code checkout
+        uses: actions/checkout@v4
+
+      - name: isntall Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install poetry
+        run: pip install poetry
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: launch Makefile
+        run: make lint-all

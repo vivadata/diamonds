@@ -6,17 +6,41 @@ authors = [
     {name = "Your Name",email = "you@example.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.11,<4.0"
 dependencies = [
     "scikit-learn (>=1.8.0,<2.0.0)",
-    "pandas (>=3.0.1,<4.0.0)"
+    "pandas (<3)",
+    "seaborn (>=0.13.2,<0.14.0)",
+    "loguru (>=0.7.3,<0.8.0)",
 ]
 
 [tool.poetry]
 
 [tool.poetry.group.dev.dependencies]
 notebook = "^7.5.4"
+ruff = "^0.15.5"
+mlflow = "^3.10.1"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # bugbear
+    "UP",  # pyupgrade
+]
+ignore = [
+    "E501"
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
